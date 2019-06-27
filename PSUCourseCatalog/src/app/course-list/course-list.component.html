@@ -1,0 +1,84 @@
+<h4>
+  Course Catalog List
+</h4>
+<div class="text-right">
+  <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/course/']">Add Course</button>
+</div>
+
+<div class="container mt-3">
+    <div class="row bg-primary">
+      <div class="col-lg-2">
+        Name
+      </div>
+      <div class="col-md-2">
+        Professor
+      </div>
+      <div class="col-sm">
+        Room
+      </div>
+      <div class="col-sm text-center">
+          Sun
+      </div>
+      <div class="col-sm text-center">
+          Mon
+      </div>
+      <div class="col-sm text-center">
+          Tue
+      </div>
+      <div class="col-sm text-center">
+          Wed
+      </div>
+      <div class="col-sm text-center">
+          Thu
+      </div>
+      <div class="col-sm text-center">
+          Fri
+      </div>
+      <div class="col-sm text-center">
+          Sat
+      </div>
+      <div class="col-sm">
+          
+      </div>
+    </div>
+    <div *ngFor="let course of courses" class="row mt-1">
+      <div class="col-lg-2">
+        <a [routerLink]="['/course/', {id: course.id}]" >{{ course.courseName }} </a>
+      </div>
+      <div class="col-md-2">
+        <div *ngIf="course.professorEmail else noEmailLink">
+          <a href="mailto:{{ course.professorEmail }}">{{ course.professorName ? course.professorName : 'TBD'}}</a>
+         </div>
+         <ng-template #noEmailLink>
+          {{ course.professorName ? course.professorName : 'TBD'}}
+         </ng-template>
+      </div>
+      <div class="col-sm">
+        {{ course.roomNumber ? course.roomNumber : 'TBD'}}
+      </div>
+      <div class="col-sm text-center">
+        <span class="fa" [ngClass]="{'fa fa-check' : course.sunday}"></span>
+      </div>
+      <div class="col-sm text-center">
+          <span class="fa" [ngClass]="{'fa fa-check' : course.monday}"></span>
+      </div>
+      <div class="col-sm text-center">
+          <span class="fa" [ngClass]="{'fa fa-check' : course.tuesday}"></span>
+      </div>
+      <div class="col-sm text-center">
+          <span class="fa" [ngClass]="{'fa fa-check' : course.wednesday}"></span>
+      </div>
+      <div class="col-sm text-center">
+          <span class="fa" [ngClass]="{'fa fa-check' : course.thursday}"></span>
+      </div>
+      <div class="col-sm text-center">
+          <span class="fa" [ngClass]="{'fa fa-check' : course.friday}"></span>
+      </div>     
+      <div class="col-sm text-center">
+          <span class="fa" [ngClass]="{'fa fa-check' : course.saturday}"></span>
+      </div> 
+      <div class="col-sm">
+        <button type="button" class="btn btn-secondary btn-sm" (click)="deleteCourse(course.id)"><span class="fa fa-trash"></span></button>
+      </div>      
+    </div>
+  </div>

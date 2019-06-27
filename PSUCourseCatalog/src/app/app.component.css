@@ -1,0 +1,10 @@
+.image-border {
+    border: double slategrey 3px;
+    border-radius: 3em;
+    background-color: white
+}
+
+.navbar-light .navbar-brand {
+    color: white !important;
+    font-size: 1.8rem;
+}
